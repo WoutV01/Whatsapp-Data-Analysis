@@ -1,0 +1,45 @@
+html {
+    background-image: url(./background.svg);
+    background-size: auto;
+    background-attachment: fixed;
+}
+
+article > header {
+    background-color: #305252;
+    padding: calc(var(--block-spacing-vertical) * 0.5) 1.5rem;
+}
+
+article {
+    padding: var(--block-spacing-vertical) 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.grid :first-child {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 1480px) {
+    .container {
+      max-width: 1410px;
+    }
+  }
+
+.titleDiv {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.insertPrompt {
+    text-align: center;
+}
+
+input:not([type=checkbox], [type=radio]),
+select,
+textarea {
+  width: auto;
+}
