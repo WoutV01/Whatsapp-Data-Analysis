@@ -37,9 +37,10 @@ export const TextAnalyser = (input: string) => {
                     break
                 case 4:
                     // add message to user in map
-                    let messages: [string] = messagesPerPerson.get(user)
+                    const messages: string[] = messagesPerPerson.get(user)!
                     messages.push(match.replace("\r\n", " "))
                     messagesPerPerson.set(user, messages)
+                    break
                 default:
                     break
                     
@@ -75,8 +76,10 @@ export const CreateCards = (dates: Map<string, number>, times: Map<string, numbe
                 <h1>{totalMessages}</h1>
             </CustomCard>
             <CustomCard title="Most popular date">
+                <>
                 <h1>{highestOccurence[0]}</h1>
                 <p>{highestOccurence[1]} Messages</p>
+                </>  
             </CustomCard>
 
         </>

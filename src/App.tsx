@@ -6,7 +6,7 @@ import CustomCard from './components/CustomCard';
 
 export default function App() {
 
-    const [cards, setCards] = useState(null)
+    const [cards, setCards] = useState<any | null>(null)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
