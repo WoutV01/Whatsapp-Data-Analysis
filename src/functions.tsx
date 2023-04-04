@@ -57,12 +57,13 @@ export const CreateCards = (dates: Map<string, number>, times: Map<string, numbe
     let totalMessages = 0
     dates.forEach((value) => totalMessages += value)
 
-    let highestOccurence = dates.entries().next().value;
-    dates.forEach((value, key) => value > highestOccurence[1] ?? (highestOccurence = [value, key]))
+    let highestOccurence = [...dates.entries()].reduce((current, next) => next[1] > current[1] ? next : current)
+
+    const sortedMessagesPerPerson = new Map([...messagesPerPerson.entries()].sort((a, b) => b[1].length - a[1].length));
 
     let messages: number[] = []
     let names: string[] = []
-    messagesPerPerson.forEach((value, key) => {
+    sortedMessagesPerPerson.forEach((value, key) => {
         messages.push(value.length)
         names.push(key)
     })
@@ -77,8 +78,8 @@ export const CreateCards = (dates: Map<string, number>, times: Map<string, numbe
             </CustomCard>
             <CustomCard title="Most popular date">
                 <>
-                <h1>{highestOccurence[0]}</h1>
-                <p>{highestOccurence[1]} Messages</p>
+                    <h1>{highestOccurence[0]}</h1>
+                    <p>{highestOccurence[1]} Messages</p>
                 </>  
             </CustomCard>
 
